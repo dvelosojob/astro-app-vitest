@@ -1,6 +1,6 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
-import Home from "./index.astro";
+import Home from "@/pages/index.astro";
 
 test("Home page should contain Tailwind button", async () => {
   const container = await AstroContainer.create();

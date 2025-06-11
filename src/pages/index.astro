@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
+// Tests work with this import
+// import Button from '@/components/Button.astro';
+
+// Tests don't work with this import
+import { Button } from "@/components/Button"
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/
@@ -18,7 +21,10 @@ import Button from '../components/Button.astro';
 
 	<body>
 		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
+			<!-- Do not work with this import Astro tests -->
+			<Button client:load>Tailwind Button in Astro!</Button>
+			<!-- Works with this import Astro tests -->
+			<!-- <Button>Tailwind Button in Astro!</Button> -->
 			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
 		</div>
 	</body>
