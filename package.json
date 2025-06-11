@@ -7,7 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest"
+    "test": "vitest",
+    "test:astro": "vitest --project=astro",
+    "test:unit": "vitest --project=unit"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
