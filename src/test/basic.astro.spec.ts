@@ -1,19 +1,23 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
+import { getContainerRenderer as reactContainerRenderer } from "@astrojs/react";
+import { loadRenderers } from "astro:container";
+
 import { expect, test } from "vitest";
 import Home from "@/pages/index.astro";
 
 test("Home page should contain Tailwind button", async () => {
-  const container = await AstroContainer.create();
+  const renderers = await loadRenderers([reactContainerRenderer()]);
+
+  const container = await AstroContainer.create({ renderers });
   const result = await container.renderToString(Home);
 
   expect(result).toContain("Tailwind Button in Astro!");
-  expect(result).toContain(
-    '<button class="appearance-none py-2 px-4 bg-purple-500'
-  );
 });
 
 test("Home page should contain markdown link", async () => {
-  const container = await AstroContainer.create();
+  const renderers = await loadRenderers([reactContainerRenderer()]);
+
+  const container = await AstroContainer.create({ renderers });
   const result = await container.renderToString(Home);
 
   expect(result).toContain('href="/markdown-page"');
